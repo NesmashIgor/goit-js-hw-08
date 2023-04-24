@@ -21,8 +21,6 @@ galleryItems.forEach(item => {
 </li>`
      arrIt.push(li) 
 });
-    
-console.log(arrIt);
 
 ulGallery.insertAdjacentHTML('afterbegin', arrIt.join(''));
 
