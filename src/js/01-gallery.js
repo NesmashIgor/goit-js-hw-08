@@ -6,10 +6,10 @@ import { galleryItems } from './gallery-items';
 // Change code below this line
 const ulGallery = document.querySelector('.gallery');
 
-function renderItem(item) {
-  ulGallery.insertAdjacentHTML(
-    'afterbegin',
-    `<li class="gallery__item">
+let arrIt = [];
+
+galleryItems.forEach(item => {
+  let li = `<li class="gallery__item">
 <a class="gallery__link" href= "${item.original}">
     <img
         title = "${item.description}"
@@ -19,15 +19,15 @@ function renderItem(item) {
     />
 </a>
 </li>`
-  );
-}
-
-galleryItems.forEach(item => {
-  renderItem(item);
+     arrIt.push(li) 
 });
+    
+console.log(arrIt);
+
+ulGallery.insertAdjacentHTML('afterbegin', arrIt.join(''));
 
 new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
-  captionDelay: 250,
+  captionDelay: 250
 });
 
