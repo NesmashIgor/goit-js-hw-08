@@ -28,8 +28,7 @@ function getDataLocalStorage() {
   localStorage.setItem('feedback-form-state', JSON.stringify(feedbackData));
 }
 
-function loggedData(e) {
-  e.preventDefault();
+function loggedData() {
 
   if (emailInput.value === '' || messageInput.value === '') {
     alert('!!!!!!!!!!');
@@ -42,5 +41,9 @@ function loggedData(e) {
 }
 
 form.addEventListener('input', throttledData);
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+});
 
-submitButton.addEventListener('submit', throttledLogData);
+
+submitButton.addEventListener('click', throttledLogData);
