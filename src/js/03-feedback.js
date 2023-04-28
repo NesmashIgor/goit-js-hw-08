@@ -23,12 +23,15 @@ let throttledData = throttle(getDataLocalStorage, 500);
 let throttledLogData = throttle(loggedData, 500);
 
 function getDataLocalStorage() {
+
   feedbackData.email = emailInput.value;
   feedbackData.message = messageInput.value;
   localStorage.setItem('feedback-form-state', JSON.stringify(feedbackData));
 }
 
-function loggedData() {
+function loggedData(e) {
+
+   e.preventDefault()
 
   if (emailInput.value === '' || messageInput.value === '') {
     alert('!!!!!!!!!!');
@@ -40,10 +43,6 @@ function loggedData() {
   }
 }
 
+
 form.addEventListener('input', throttledData);
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-});
-
-
-submitButton.addEventListener('click', throttledLogData);
+form.addEventListener('submit', throttledLogData);
